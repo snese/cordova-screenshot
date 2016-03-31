@@ -8,7 +8,7 @@
  */
 var exec = require('cordova/exec'), formats = ['png','jpg'];
 module.exports = {
-	save:function(callback,format,quality, filename) {
+    save:function(callback,format,quality, filename, uri, msec) {
 		format = (format || 'png').toLowerCase();
 		filename = filename || 'screenshot_'+Math.round((+(new Date()) + Math.random()));
 		if(formats.indexOf(format) === -1){
@@ -19,7 +19,7 @@ module.exports = {
 			callback && callback(null,res);
 		}, function(error){
 			callback && callback(error);
-		}, "Screenshot", "saveScreenshot", [format, quality, filename]);
+        }, "Screenshot", "saveScreenshot", [format, quality, filename, uri, msec]);
 	},
 
 	URI:function(callback, quality){
